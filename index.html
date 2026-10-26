@@ -682,7 +682,7 @@
 
     .productos-grid {
       display: grid;
-      grid-template-columns: 1.7fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
       align-items: stretch;
     }
@@ -786,31 +786,15 @@
       transform: translateY(-6px);
       box-shadow: var(--card-shadow-hover);
     }
-    .ecolux .product-img-area {
-      background:
-        radial-gradient(circle at 80% 20%, rgba(126,119,92,.25), transparent 55%),
-        linear-gradient(135deg, var(--kraft-light) 0%, #C9AE84 100%);
-      border-bottom: 4px solid var(--sage);
-      flex-direction: column;
-      gap: .6rem;
+    /* Fotos de producto */
+    .product-img-area.has-photo { height: 300px; }
+    .product-photo {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition);
     }
-    .ecolux-wordmark {
-      font-family: var(--font-head);
-      font-weight: 900;
-      font-size: clamp(3rem, 7vw, 4.5rem);
-      color: var(--sage);
-      letter-spacing: -.03em;
-      line-height: 1;
-    }
-    .ecolux-wordmark b { color: #3A2E22; font-weight: 900; }
-    .ecolux-by {
-      font-family: var(--font-head);
-      font-weight: 700;
-      font-size: .8rem;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: #3A2E22;
-    }
+    .product-card:hover .product-photo { transform: scale(1.04); }
+    .ecolux .product-img-area { border-bottom: 4px solid var(--sage); }
     .ecolux .product-badge { background: var(--sage); }
     .ecolux .product-type { color: var(--sage); }
     .ecolux .product-name { font-size: 1.6rem; }
@@ -829,6 +813,20 @@
       margin-bottom: .75rem;
     }
     .ecolux .product-meta .product-type { margin-bottom: 0; }
+
+    /* Papelux Institucional: línea Papelux */
+    .institucional .product-img-area { border-bottom: 4px solid var(--teal); }
+    .institucional .product-badge { background: var(--teal-dark); }
+    .institucional .product-type { color: var(--teal-dark); }
+    .institucional .feature-tag { background: var(--teal-pale); color: var(--teal-dark); }
+    .institucional .product-cta {
+      background: var(--teal-dark);
+      box-shadow: 0 4px 16px rgba(11,122,140,.3);
+    }
+    .product-card.institucional:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--card-shadow-hover);
+    }
 
     /* GOL: próximo lanzamiento, estética de "deshabilitado" */
     .product-card.soon {
@@ -1549,7 +1547,7 @@
                     <img src="img/logo-papelux.jpg" alt="PapeLUX" style="max-height:200px;max-width:85%;object-fit:contain;" onerror="this.src='img/logo-papelux.png';this.onerror=null;" />
                   </div>
                   <div class="hero-carousel-slide">
-                    <img src="img/carousel-papelux.jpeg" alt="Rollos de papel higiénico Papelux en un baño" />
+                    <img src="assets/brand/papelux-hero-ecolux-bano.png" alt="Pack de EcoLux de 4 rollos sobre la mesada de un baño" />
                   </div>
                 </div>
                 <div class="hero-carousel-dots" id="heroDots">
@@ -1588,11 +1586,9 @@
 
       <div class="productos-grid">
         <!-- Card 1: EcoLux (línea activa) -->
-        <!-- TODO: sumar foto real del packaging de EcoLux cuando esté disponible -->
         <div class="product-card ecolux reveal">
-          <div class="product-img-area">
-            <div class="ecolux-wordmark">Eco<b>Lux</b></div>
-            <div class="ecolux-by">♻️ by Papelux</div>
+          <div class="product-img-area has-photo">
+            <img src="assets/brand/papelux-producto-ecolux-packshot.png" alt="Pack de EcoLux de 4 rollos" class="product-photo" />
             <div class="product-badge">Disponible</div>
           </div>
           <div class="product-info">
@@ -1618,8 +1614,32 @@
           </div>
         </div>
 
-        <!-- Card 2: GOL (próximo lanzamiento, no disponible todavía) -->
-        <div class="product-card soon reveal reveal-delay-1" aria-label="GOL, próximo lanzamiento">
+        <!-- Card 2: Papelux Institucional (bolsón x30) -->
+        <div class="product-card institucional reveal reveal-delay-1">
+          <div class="product-img-area has-photo">
+            <img src="assets/brand/papelux-producto-institucional-bolson30.png" alt="Bolsón Papelux Institucional de 30 rollos" class="product-photo" />
+            <div class="product-badge">Disponible</div>
+          </div>
+          <div class="product-info">
+            <div class="product-type">Papel Higiénico</div>
+            <div class="product-name">Papelux Institucional</div>
+            <p class="product-desc">
+              Bolsón de 30 rollos de 50 metros cada uno. Pensado para espacios de
+              alto consumo: comercios, oficinas y locales con mucho tráfico.
+            </p>
+            <div class="product-features">
+              <span class="feature-tag">Bolsón x30</span>
+              <span class="feature-tag">50 m por rollo</span>
+            </div>
+            <a href="https://api.whatsapp.com/send?phone=5491130321149&amp;text=Hola%20Papelux!%20%F0%9F%91%8B%20Quiero%20consultar%20por%20Papelux%20Institucional"
+               class="product-cta" target="_blank" rel="noopener">
+              💬 Consultá precio
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 3: GOL (próximo lanzamiento, no disponible todavía) -->
+        <div class="product-card soon reveal reveal-delay-2" aria-label="GOL, próximo lanzamiento">
           <div class="product-img-area">
             <img src="img/cocina-logo-gol.jpeg" alt="GOL — Papel higiénico y rollo de cocina" class="product-logo-fallback" />
             <div class="product-badge">Próximamente</div>
@@ -1659,9 +1679,9 @@
         </div>
         <div class="elegir-card reveal reveal-delay-1">
           <span class="line-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z"/><path d="m14.5 12.5 2-2"/><path d="m11.5 9.5 2-2"/><path d="m8.5 6.5 2-2"/><path d="m17.5 15.5 2-2"/></svg></span>
-          <div class="elegir-title">80 metros reales</div>
+          <div class="elegir-title">Metros reales</div>
           <p class="elegir-desc">
-            Medidos, no prometidos. Lo que dice el paquete es lo que hay en el rollo.
+            Medimos cada rollo. Lo que dice el paquete es lo que tiene.
           </p>
         </div>
         <div class="elegir-card reveal reveal-delay-2">
@@ -1675,7 +1695,7 @@
           <span class="line-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></span>
           <div class="elegir-title">Pensado para tu negocio</div>
           <p class="elegir-desc">
-            Pack de 4 para la góndola. Bolsones de 20 o 40 rollos para reponer.
+            Pack de góndola, bolsón de 20 rollos y bolsón de 40 rollos. Elegí el que te sirva.
           </p>
         </div>
       </div>
