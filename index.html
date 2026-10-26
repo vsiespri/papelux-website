@@ -450,6 +450,11 @@
       object-position: center center;
       display: block;
     }
+    /* Foto completa, sin recorte: el fondo continúa el turquesa de la foto */
+    .hero-carousel-slide.slide-fit {
+      background: linear-gradient(180deg, #17A8C9 0%, #168EAA 50%, #16A1BF 100%);
+    }
+    .hero-carousel-slide.slide-fit img { object-fit: contain; }
     .hero-carousel-dots {
       position: absolute;
       bottom: .9rem;
@@ -787,7 +792,7 @@
       box-shadow: var(--card-shadow-hover);
     }
     /* Fotos de producto */
-    .product-img-area.has-photo { height: 300px; }
+    .product-img-area.has-photo { height: auto; aspect-ratio: 1080 / 850; }
     .product-photo {
       width: 100%; height: 100%;
       object-fit: cover;
@@ -816,7 +821,6 @@
 
     /* Papelux Institucional: línea Papelux */
     .institucional .product-img-area { border-bottom: 4px solid var(--teal); }
-    .institucional .product-photo { object-position: 50% 65%; }
     .institucional .product-badge { background: var(--teal-dark); }
     .institucional .product-type { color: var(--teal-dark); }
     .institucional .feature-tag { background: var(--teal-pale); color: var(--teal-dark); }
@@ -1550,10 +1554,14 @@
                   <div class="hero-carousel-slide">
                     <img src="assets/brand/papelux-hero-ecolux-bano.png" alt="Pack de EcoLux de 4 rollos sobre la mesada de un baño" />
                   </div>
+                  <div class="hero-carousel-slide slide-fit">
+                    <img src="assets/brand/papelux-producto-institucional.png" alt="Bolsón Papelux Institucional junto al pack de EcoLux" />
+                  </div>
                 </div>
                 <div class="hero-carousel-dots" id="heroDots">
                   <button class="hero-carousel-dot active" onclick="goToSlide(0)" aria-label="Ver imagen 1"></button>
                   <button class="hero-carousel-dot" onclick="goToSlide(1)" aria-label="Ver imagen 2"></button>
+                  <button class="hero-carousel-dot" onclick="goToSlide(2)" aria-label="Ver imagen 3"></button>
                 </div>
               </div>
             </div>
@@ -1618,7 +1626,7 @@
         <!-- Card 2: Papelux Institucional (bolsón x30) -->
         <div class="product-card institucional reveal reveal-delay-1">
           <div class="product-img-area has-photo">
-            <img src="assets/brand/papelux-producto-institucional-bolson30.png" alt="Bolsón Papelux Institucional de 30 rollos" class="product-photo" />
+            <img src="assets/brand/papelux-producto-institucional.png" alt="Bolsón Papelux Institucional de 30 rollos junto al pack de EcoLux" class="product-photo" />
             <div class="product-badge">Disponible</div>
           </div>
           <div class="product-info">
